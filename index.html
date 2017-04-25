@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<body>
+
+
+<w3-test-directive
+    prenom="abdelaziz"
+    famille="{role:'papa'}">
+</w3-test-directive>
+
+<maalej
+	nom="maalej"
+    prenom="iyed"
+    famille="{role:'filous'}">
+</maalej>
+
+
+
+
+<script>
+var app = angular.module("myApp", []);
+
+app.controller("FamilyCtrl", function($scope){
+console.log($scope.nom);
+            $scope.nom = "toxctoc";
+
+});
+
+app.directive("w3TestDirective", function() {
+    return {
+        restrict : "E",
+        template : "<h1>{{famille.role}}</h1><h3>{{nom}} - {{prenom}}</h3>",
+        scope: {
+        	nom:"@",
+            prenom: "@",
+            famille: "="
+        },
+        link:function(scope, element, attrs){
+          	/*console.log(scope);
+            console.log(element);
+            console.log(attrs);
+            */
+        },
+        controller: "FamilyCtrl"
+    };
+});
+
+app.directive("maalej", function() {
+    return {
+        restrict : "E",
+        template : "<h1>{{famille.role}}</h1><h3>{{nom}} - {{prenom}}</h3>",
+        scope: {
+        	nom:"@",
+            prenom: "@",
+            famille: "="
+        }
+    };
+    });
+
+</script>
+
+
+</body>
+</html>
